@@ -1,0 +1,58 @@
+//C++, ADA
+class FMSController{
+
+priavte:IMetricPressureDataSensor pressureObjReference;
+public:
+FMSController(IMetricPressureDataSensor objRef){
+	this.pressureObjReference=objRef;
+}
+
+void getPressureInfo(){
+
+this.pressureObjReference.getPressure();
+
+}
+
+
+class IMetricPressureDataSensor{
+
+public:
+ virtual int getPressure(){}=0;
+
+}
+class BAROSensor:IMetricPressureDataSensor{
+
+public:
+int getPressure(){ // Implementation}
+}
+
+class RadioMeter:IMetricPressureDataSensor{
+
+public:
+int getPressure(){ // Implementation }
+}
+
+
+main(){
+
+BAROSensor _sensor;
+FMSController controllerObj(_sensor);
+RadioMeter _radiSensor;
+FMSController controllerObj(_radiSensor);
+}
+
+
+
+//C, Python
+void fmsController(fp){
+
+fp();
+}
+
+
+int getPressureFromBaroSensor(){
+}
+
+int getPressureFromRadioSensor(){}
+
+
