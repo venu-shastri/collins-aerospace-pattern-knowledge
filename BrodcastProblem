@@ -22,6 +22,67 @@ public: void M(){}
 	    
 }
 
+//Solution
+class A{
+
+I *dependency
+public:A(I dependency){
+		this->dependency=dependency;
+}
+
+void brodCast(){
+		dependency->M();
+}
+
+}
+class I{
+
+	public: virtual void M(){}=0;
+			
+
+}
+class B:I{
+
+public: void M(){}
+	    
+}
+
+class C:I{
+public: void M(){}
+ 
+
+}
+
+class Composite:I{
+	//Array
+	Vector<I> _list;
+	public:
+	void Register(I reciever){
+		_list->add(reciever);
+	}
+	void brodcast(){
+		//Iterate through the list and invoke each reciever
+	}
+	void M(){
+		this->brodCast();
+	}
+	
+}
+main(){
+
+	A obj(new B());
+	obj.brodCast();
+	A obj1(new C());
+	obj.brodCast();
+	
+	Composite composite_obj;
+	obj.add(new B());
+	obj.add(new C());
+	
+	A obj2(composite_obj);
+	obj.brodCast();
+}
+
 class C:I{
 public: void M(){}
  
