@@ -28,14 +28,6 @@ Design Pattern
 				MVC, MVVP,MVVM
 			Multiple Components
 
-**Finacial Risk Calculator System**
-
-1.Importing TradeData and Reference Data from xml
-2.Configure or define external Parameters
-3.Calculating Risk
-4.Generating RiskReport
-5.Merging Imported Data
-6.Excel Exporter
 
 1. **Encapsulation (Seperation - SRP)**
 
