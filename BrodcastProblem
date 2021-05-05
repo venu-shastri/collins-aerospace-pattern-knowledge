@@ -1,0 +1,39 @@
+class A{
+
+I *dependency
+public:A(I dependency){
+		this->dependency=dependency;
+}
+
+void brodCast(){
+		dependency->M();
+}
+
+}
+class I{
+
+	public: virtual void M(){}=0;
+			
+
+}
+class B:I{
+
+public: void M(){}
+	    
+}
+
+class C:I{
+public: void M(){}
+ 
+
+}
+
+main(){
+
+	A obj(new B());
+	obj.brodCast();
+	A obj1(new C());
+	obj.brodCast();
+	A obj2(new B(),new C());
+	obj.brodCast();
+}
