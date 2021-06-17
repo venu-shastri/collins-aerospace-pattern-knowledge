@@ -1,0 +1,78 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+class Passanger{
+    
+    public:
+    string PNR;
+    string Name;
+    string ContactNumber;
+    string emailId;
+    string DOB;
+    
+}
+class PassangerInMemeoryRepository{
+    
+    std::vector<Passanger> passangers ;
+    public: 
+    
+    void add(Passanger *Passanger){}
+    vector<Passanger> select(){  return passangers;};
+}
+
+class PassangerSearchService{
+    
+    PassangerInMemeoryRepository *repo=new  PassangerInMemeoryRepository();
+    public:
+    
+    vector<passanger> SearchByStrtergy(passangerSearchStrategy *strategy){
+        
+        return strategy->search(repo->select())
+    }
+    
+}
+
+class passangerSearchStrategy{
+    
+public:
+        vector<Passanger> search(vector<Passanger> passangers){}=0;
+}
+class searchByPNRStrategy :passangerSearchStrategy {
+    
+    string pnr;
+    public:searchByPNRStrategy(string pnr){}
+    vector<Passanger> search(vector<Passanger> passangers){  ..search }
+}
+class searchByNameStrategy : passangerSearchStrategy{
+    
+    string name;
+    public:searchByNameStrategy(string name){}
+    vector<Passanger> search(vector<Passanger> passangers){  ..search }
+}
+class searchByEmailStrategy:passangerSearchStrategy{
+    
+    string email;
+    public:searchByEmailStrategy(string email){}
+    vector<Passanger> search(vector<Passanger> passangers){  ..search }
+}
+
+
+int main ()
+{
+  
+  PassangerSearchService _service;
+ vector<Passanger> _passangers= service.SearchByStrtergy(new searchByPNRStrategy("ABCD"));
+ _passangers= service.SearchByStrtergy(new searchByEmailStrategy("a@a.com"));
+ _passangers= service.SearchByStrtergy(new searchByNameStrategy("tom"));
+ 
+  return 0;
+}
