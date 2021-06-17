@@ -57,20 +57,24 @@ public:void Write (string msg)
   cout << msg};
 }
 
+class FakeLogger:ILogger{
+    
+    public:void Write(string msg){ // 
+    }
+}
 //unit test Code
 //Arrange
 //Action
 //Assert
 void GivenValidatorWithFlightDataWhenValidateInvokedThenAssertValidationStatus(){
     
-    FlightDataValidator _validator; //Code Under test
+    FlightDataValidator _validator(new FakeLogger()); //Code Under test
     bool actualValue=_validator.Validate("vector of FlightDataModel");
     Assert.equal(actualValue,true);
     
     
     
 }
-
 int main ()
 {
   cout << "Hello World";
