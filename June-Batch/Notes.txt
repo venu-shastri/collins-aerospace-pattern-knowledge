@@ -1,0 +1,263 @@
+Problem statement (Use Case)
+
+    Programming Paradigm/s [OOAD/Functional ]
+
+		Programming Language
+				Design Patterns
+
+"C++"
+
+Language design and Compiler/Interpreter Development
+Platform (Framework, Tool,Library,Components,Modules)
+
+
+if{
+}
+
+if)`
+
+Object Oriented Analysis Design (Imperative)
+
+C++ 11 - Function Orientation (Declarative )
+
+
+Derive - Use Case , OOAD Concepts 
+Present - Modeling (UML)
+implementation - Language (Code)
+
+
+
+Flight Operational Data 
+             (.xml) format
+			 <DataStats>
+			 <flight number="" model="" >
+			     <operationlHours></operationlHours>
+				 <airPrsessure></airPrsessure>
+			 </flight
+			 </DataStats>
+			 
+Flight Operational Data Converter
+              Convertion
+			  Vaidation
+			  ErrorLogging
+			 
+			 
+Application - Ananlysis And Reporting Tool  ->input .csv
+							FlightNumber,Model,OperationalHours,AirPressure
+							
+							
+	->Convert Flight Data From XML to CSV
+	->Validate Flight Data 
+	->Log  Error info  over console
+	->Read Flight Data From XML
+	->Write Fligt Data To CSV
+							
+		"Cross Cutting Concerns / Non -Functional requirements"					Features (Functional Requirement)
+	1.Look and Feel																Communication
+	2.Performance           													Charge
+	3.Cost                  													Display
+	4.Battery Backup															keyPad
+	5.Charging Time
+	
+	"Critical Quality Attrbutes"
+	"ATAM"
+	
+	
+	Design/Code Quality
+	
+	- Unit Test - Bug Free
+			TDD
+	- Adpatible - Loosly Coupled 
+	- Reusability - Seperated
+	
+	OOAD : 
+			Upma (Prepare)
+			Chop - Vegitables - 2
+			Roast - Rava - 3
+			Boil- Water- 1
+			Fry- Vegitables - 4
+			Cook - Mix- - 5
+			
+			output function(input) //Pure Function
+			       int add(int x,int y){return x+y;}
+			Chain Tasks
+						Select().Filter().ProjectResult()
+			Parallel 
+			
+			
+Project - Complete
+
+		Collection Of Objects
+			Team
+			   Define Role- Team Member  (Object)
+			   
+			   Architect - Role
+						Design
+						Mentor
+						Descesion
+			   Developer
+						code
+						unitTest
+						Refactroing
+						TimeSheet
+						check-in/check-Out
+			   Test
+			   Devops
+			   productOwner
+			   Project manager
+			   DomainExpert 
+			   
+			   
+			   class Ingradient{
+			   }
+			   class Upma{
+							
+							
+							Chop(veg){}
+							Boil(water){}
+							Fry(ingredients){}
+							Mix(everything){}
+							Roast(rava){}
+			   
+			   }
+			   class Cook{
+			   }
+			   
+			   
+			   BreakFast upma;
+			   
+			   What is an Object ?
+			   
+				S P	A C	E = Sum of Size Of Individual State Value
+			    - - - - -
+				SRP
+				O
+				L
+				I
+				DIP 
+			1.	"Define Role and Assign Responsibilities" - Encapsulation
+				
+				Concepts 		Principles
+				Encapsulation   Single Responsibility Principle (High Cohesion)
+									Violation
+									    "God" Class/Object / Brain Class / Method
+										Non Communication Behavior 
+										Big Ball Of Mud
+				"Uniform Distribution Of Responsibilities" = Classes/Roles
+				
+			2. Reusability-----------------------------Complete Code Reuse        			------Space/Object Reuse
+					Relationship---------------------------- "is-a/assume" Inheritance    			 --- " has-a/uses " 
+																										[Association , Composition , 		Aggregation]
+																											Associate     Contains             Holds
+																														  Death relationship   Part-Of
+																															Whole 
+																													Dependency Inversion Principle"
+																														"Let High Level Module Depends On Abstraction Of Low Level Module"
+																														 
+				"Uniform Distribution of Responsibilities" -SRP
+				"Prefer Has-A relationship over Is-A for reusability"
+				"Program For interface not for Implementation" - "Abstraction"
+				"Avoid Fat Interfaces"
+				"Yagni ,KISS ,LOD, DRY"
+				
+				
+			Abstraction :- OOAD 
+				"Runtime Polymorphism"
+				"Real World Object behavior"
+			   "Essential" -> "How to use"
+			   
+			   "Object A uses Object B"
+			   "Person"  uses "Mobile Phone"
+			   "Driver" uses "Car" 
+			   "Developer" uses Machine/Laptop/WorkStation"
+			   
+				
+				//Dependent
+				class HighLevelModule{
+				
+				}
+				
+				//Dependency
+				class LowLevelModule{
+				
+				}
+				
+				
+				SpaceCraft *craft=new USASpaceCraft(); //Substitution 
+				InternationalSpaceStation _station;
+				_station.Dock(&craft);
+				_station.UnDock();
+				
+				*craft=new USSRSpaceCraft();
+				_station.Dock(&craft);
+				_station.UnDock();
+				
+				*craft=new ISROSpaceCraft();
+				_station.Dock(&craft);
+				_station.UnDock();
+				
+				
+				
+				
+				
+				//High Level Module
+				class InternationalSpaceStation{
+				
+				//depends on interface
+				SpaceCraft *spaceCraft;
+				//Dependency Injection 
+				//Constructor Injection
+				//Method Injection 
+				//Setter Injection
+				public:
+					void Dock(SpaceCraft *spaceCraftReference){
+					  *spaceCraft->Connect();
+					  
+					}
+					void UnDock(){
+					
+						*spaceCraft->Dissconnect();
+					}
+				
+				}
+				
+				//interface
+				class SpaceCraft{
+				
+				public:
+						void Connect(){}=0; //pure Virutual Method
+						void Dissconnect(){}=0; //pure Virutual Method
+				}
+				//Low Level Module Implements Interface
+				class USASpaceCraft : SpaceCraft{
+				
+				public:
+				           void Connect(){}
+						   void Dissconnect{}
+						   void Lauch(){}
+						   void Move(){}
+						   
+						   
+				
+				}
+				class USSRSpaceCraft : SpaceCraft{
+				
+				public: 
+						 void Connect(){}
+						   void Dissconnect{}
+						void Latch(){}
+						void UnLatch
+				
+				}
+				class ISROSpaceCraft :SpaceCraft{
+						
+							public :
+									 void Connect(){}
+									 void Dissconnect{}
+									 Hangup(){}
+							         Release(){}
+				
+				}
+			
+				
+				

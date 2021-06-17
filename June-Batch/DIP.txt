@@ -1,0 +1,84 @@
+//Interface
+class Appliance{
+
+         public:
+		 virtual void On(){}=0;
+		 virtual void OFF(){}=0;
+
+}
+
+
+//uses
+//High Level Module
+class Circuit{
+
+Appliance *applianceRef;
+public:
+
+void setAppliance(Appliance *ptr){ this->applianceRef=ptr;}
+void Open(){
+ applianceRef->On();
+}
+
+void Close(){}
+applianceRef->Off();
+
+}
+
+
+//low Level Module
+class LedBulb : Appliance{
+
+public: void Glow(){}
+        void Dim(){}
+		void On(){this->Glow();}
+		void Off(){this->Dim();}
+
+}
+
+
+class CFLBulb :Appliance{
+public: On{}
+        Off(){}
+
+}
+
+class TV:Appliance{
+public: On{}
+        Off(){}
+}
+
+class Fan:Appliance{
+public: On{}
+        Off(){}
+}
+
+
+//test
+
+class Tester:Appliance{
+
+public: On{}
+        Off(){}
+
+}
+
+
+main(){
+
+Circuit obj;
+obj.setAppliance(new LedBulb());
+obj.setAppliance(new CFLBulb());
+obj.setAppliance(new TV());
+obj.setAppliance(new Fan());
+
+}
+
+
+
+test(){
+
+Circuit _obj;
+_obj.setAppliance(new Tester()); //stub 
+
+}
