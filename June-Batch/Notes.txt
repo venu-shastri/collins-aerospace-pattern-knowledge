@@ -454,6 +454,12 @@ Different ways of Injecting Dependency (Strategy)
 			#if "DEV" defined
 			s1=new ConsoleLoggerDecorator(s1);
 			
+		Component s1=new ComponentDecorator().addTarget(&s1).AddConsoleLoggingBehavior().done();
+		
+		StringBuilder *builder=new StringBuilder();
+		builder->appen("abc").append("xyz").ToString();
+		
+			
 			
 			#else "PROD" defined
 			s1=new FileLoggerDecorator(s1);
