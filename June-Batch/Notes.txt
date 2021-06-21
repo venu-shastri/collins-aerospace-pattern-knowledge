@@ -261,3 +261,221 @@ Project - Complete
 			
 				
 				
+				
+Dependency Inversion Principle
+		"Abstraction" 
+				OOAD : Runtime Polymorphism
+				Function : Function Pointer
+				
+				class H{
+				
+				 I basePtr;
+				 public: H(I dependency){}
+				
+				}
+				
+				class I{
+				}
+				class L1 : I{
+				
+				}
+				class L2:I{
+				}
+				class Composite:I{
+				
+				vector<I> list;
+				void add(I ptr){list->add(ptr);}
+				
+				
+				}
+				
+			function H(fptr ptr){
+			}
+			
+			function L(){}
+			function L`(){}
+			function L``(){}
+			function composite(List of function pointers){
+			
+			}
+			
+			H(&L);
+			H(&L`);
+			H(&L``);
+			H(&composite);
+			
+			
+			legacyApi(data,callbackAddress){
+			
+			
+			 }
+			 
+			 legacyApi("ggggg",&callback);
+			 
+			 
+			 callback1(){
+			 
+			  }
+			  
+			  callback2(){
+			  
+			  }
+			 
+			 compositeCallback(){
+			 callback1();
+			 callback2();
+			 }
+			 legacyApi('hhhhhh',&compositeCallback);
+			 
+			 
+Different ways of Injecting Dependency (Strategy)
+		Using Constructor 
+					Dependency is must
+					Dependency will never ever change for the lifetimeof Dependent.
+		Using Setter Method
+					Dependency is Optional
+					Dependency can change for the lifetime of Dependent
+		
+		
+		
+		class Car{
+		
+		Engine ptr;
+		MediaNavSystem multiMediaSystem;
+		 public:
+		     Car(Engine *ref){
+			 ptr=ref;
+			 }
+			 void setMediaSystem(MediaNavSystem *ptr){}
+			 //C#
+			 public MediaNavSystem Media{set;set;}
+		
+		}
+		
+		
+		class Engine{
+		
+		
+		}
+		class MediaNavSystem{
+		}
+		
+		new Car(new Engine());//Constructor Injection  by Hand
+		DiContainer.GetService<Car>(); //Injection By Container MEF,UNity,
+		
+		
+		new Car(new Engine(new FuelPump(),new Starter(),new Ignition()
+		
+		"Hollywood Principle"
+		    "Don't Call us We will Call you"
+			
+			Register Services with Container
+			Container uses Factory
+			Container manage Lifetime 
+			Container Resole Dependencies
+			"Register- Resole"
+			"Autowiring"
+			
+			Container.getService<Car>();
+			
+			
+			
+			
+			
+			
+			class BankAccount{
+			
+			balance;
+			IAccountStateHandler *currentState=new  ActiveStateHandler();
+			public:
+			  bool withdraw(){
+			  
+			  //delegate
+			  currentState->Withdraw(this);
+			  
+			  }
+			  bool deposit(){  currentState->deposit(this);}
+			  bool Close(){}
+			  void setState(IAccountStateHandler nexrState){
+			  delete currentState;
+			  currentState=nexrState;}
+			
+			}
+			
+			class IAccountStateHandler{ public: virtual void Deposit(BankAccount context){}=0;
+												virtual void Withdraw(BankAccount context){}=0;
+			class ActiveStateHandler :IAccountStateHandler{
+			
+			bool withdraw(BankAccount context){
+			
+			context.setState(new ODState());
+			
+			}
+			bool Deposit(BankAccount context){}
+			
+			}
+			
+			
+			
+			
+			class Component{
+			
+					public:virtual void Operation(){}=0;
+			}
+			
+			class Sensor:Component{
+					public: void Operation(){
+					
+					}
+			}
+			class ComponentDecorator : Component{
+					Component _targetObject;
+					ComponentDecorator(Component targetObject){ this->_targetObject=targetObject;}
+					void Operation(){
+					_targetObject.Operation();
+					}
+			}
+			class ConsoleLoggerDecorator:ComponentDecorator{
+			
+					
+					public:
+					
+					LoggerDecorator(Component targetObject):ComponentDecorator::ComponentDecorator(targetObject){}
+					
+					void Operation(){
+					 cout<<"Begin"
+					 ComponentDecorator::Operation();
+					 cout<<"End";
+					
+					}
+			}
+			
+			Component *s1=new Sensor();
+			#if "DEV" defined
+			s1=new ConsoleLoggerDecorator(s1);
+			
+			
+			#else "PROD" defined
+			s1=new FileLoggerDecorator(s1);
+			
+			s1->Operation();
+			
+			
+			Component *s2=new Sensor();
+			s2->Operation();
+			
+			
+			
+			class Sensor{
+			Ilogger ref;
+			public:
+					Sensor(Ilogger *ptr ){
+					
+					}
+			}
+			
+			new Sensor(new ConsoleLogger());
+			
+			new Tea(new Sugar());
+			
+			
