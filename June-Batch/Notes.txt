@@ -485,3 +485,70 @@ Different ways of Injecting Dependency (Strategy)
 			new Tea(new Sugar());
 			
 			
+			
+
+class PrintManager : IPrintService{
+public:virtual void Print(byte[] content){}
+}
+
+class ProxyPrintManager:IPrintService{
+PrintManager _manager=new PrintManager();
+
+public:
+      void Print(byte[] content) {
+		//Audit
+			_manager.Print(content);
+			
+	  } 
+
+
+}
+class IPrintService{
+
+public:virtual void Print(byte[] content){}=0;
+
+}
+class Client{
+
+ IPrintService _printService;
+ 
+ public :
+ 
+    void setPrintService(IPrintService service){ this->_printService=service;}
+	void PrintDocument(){
+	this->_printService->Print(111111);
+	}
+
+}
+
+Client obj;
+obj.setPrintService(new ProxyPrintManager());
+obj.PrintDocument();
+
+
+class Memento{
+string state;
+
+public:
+   void SetState(string state){ this->state=state;}
+   string getState(){return this->state;}
+
+}
+class Object{
+
+ string state;
+ public:
+        void ChangeState(string newState){ this->state=newState;}
+		string getState(){ return this->state;}
+		
+		
+
+}
+
+
+Object obj;
+obj.ChangeState("S1");
+obj.ChangeState("S2");
+obj.ChangeState("S3");
+obj.Reset();
+obj.getState(); // "S2"
