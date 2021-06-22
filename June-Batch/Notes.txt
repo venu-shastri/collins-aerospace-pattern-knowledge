@@ -552,3 +552,9 @@ obj.ChangeState("S2");
 obj.ChangeState("S3");
 obj.Reset();
 obj.getState(); // "S2"
+
+
+Book Links
+https://www.amazon.com/Functional-Programming-programs-functional-techniques/dp/1617293814
+https://www.elsevier.com/books/programming-language-pragmatics/scott/978-0-12-374514-9
+https://www.amazon.com/Adaptive-Code-principles-Developer-Practices/dp/1509302581
